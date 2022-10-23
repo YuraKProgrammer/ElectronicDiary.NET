@@ -1,3 +1,5 @@
 /.vs
 /ElectronicDiary.DesktopClient/obj
 /ElectronicDiary.DesktopClient/bin
+/ElectronicDiary.Models/obj
+/ElectronicDiary.Models/bin
