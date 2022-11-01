@@ -8,7 +8,7 @@
         public string Homework { get; set; }
         public TimePoint StartTime { get; set; }
         public TimePoint EndTime { get; set; }
-        public Presence Presence { get; set; }
+        public List<Grade> Grades { get; set; }
         /// <summary>
         ///Полноценное заполнение 
         /// </summary>
@@ -23,7 +23,7 @@
 
         }
         /// <summary>
-        /// Кратнкая форма создания
+        /// Краткая форма создания
         /// </summary>
         public Lesson(string title, TimePoint startTime, TimePoint endTime)
         {
@@ -42,6 +42,14 @@
             StartTime = startTime;
             EndTime.Hour = startTime.Hour + duration.Hours;
             EndTime.Minute = startTime.Minute + duration.Minutes;
+        }
+        public void AddGrade(Grade grade)
+        {
+            Grades.Add(grade);
+        }
+        public void RemoveGrade(Grade grade)
+        {
+            Grades.Remove(grade);
         }
     }
 }

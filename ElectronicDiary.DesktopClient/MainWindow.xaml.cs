@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElectronicDiary.DesktopClient.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,22 @@ namespace ElectronicDiary.DesktopClient
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void StudentClick(object sender, RoutedEventArgs e)
+        {
+            StudentWindow window = new StudentWindow();
+            window.Show();
+        }
+        private void TeacherClick(object sender, RoutedEventArgs e)
+        {
+            StudentWindow window = new StudentWindow();
+            window.Show();
+        }
+        private void ParentClick(object sender, RoutedEventArgs e)
+        {
+            StudentWindow window = new StudentWindow();
+            window.Show();
         }
     }
 }

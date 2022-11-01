@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElectronicDiary.DesktopClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Электронный дневник. Начало." Height="450" Width="800" Icon="/ElectronicDiary.DesktopClient;component/images/icon.ico">
     <Grid>
-
+        <TextBlock Text="Войти как: " Margin="0,0,449,236"/>
+        <Button Content="Ученик" Click="StudentClick" Margin="33,27,515,328"/>
+        <Button Content="Родитель" Click="ParentClick" Margin="33,119,515,236"/>
+        <Button Content="Учитель" Click="TeacherClick" Margin="33,210,515,144"/>
     </Grid>
 </Window>

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ElectronicDiary.Models
 {
-    public enum Presence
+    public class Date
     {
-        There,
-        SeriousReason,
-        Absenteeism
+        public int Day { get; set; }
+        public int Month { get; set; }
+        public int Year { get; set; }
     }
 }
