@@ -5,7 +5,9 @@ VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectronicDiary.DesktopClient", "ElectronicDiary.DesktopClient\ElectronicDiary.DesktopClient.csproj", "{C5EDC90A-7585-4B30-BD24-5BB0E1E27240}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicDiary.Models", "ElectronicDiary.Models\ElectronicDiary.Models.csproj", "{FC0A7CD1-43EE-4A51-9410-D95D3A285513}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectronicDiary.Models", "ElectronicDiary.Models\ElectronicDiary.Models.csproj", "{FC0A7CD1-43EE-4A51-9410-D95D3A285513}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicDiary.SchoolDayStorage", "ElectronicDiary.SchoolDayStorage\ElectronicDiary.SchoolDayStorage.csproj", "{16E9DEBA-CD6F-4091-8A21-E4E5A220B823}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{FC0A7CD1-43EE-4A51-9410-D95D3A285513}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC0A7CD1-43EE-4A51-9410-D95D3A285513}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC0A7CD1-43EE-4A51-9410-D95D3A285513}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16E9DEBA-CD6F-4091-8A21-E4E5A220B823}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16E9DEBA-CD6F-4091-8A21-E4E5A220B823}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16E9DEBA-CD6F-4091-8A21-E4E5A220B823}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16E9DEBA-CD6F-4091-8A21-E4E5A220B823}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElectronicDiary.SchoolDayStorage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,15 @@ namespace ElectronicDiary.DesktopClient.Windows
     /// </summary>
     public partial class StudentWindow : Window
     {
+        public ISchoolDayStorage schoolDayStorage = new TempSchoolDayStorage();
         public StudentWindow()
         {
             InitializeComponent();
+            lb.ItemsSource = schoolDayStorage.Load(DateTime.Now).Schedule;
+        }
+
+        public void _lb_MouseDoubleClick(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

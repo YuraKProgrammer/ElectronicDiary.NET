@@ -12,6 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ElectronicDiary.Models\ElectronicDiary.Models.csproj" />
+    <ProjectReference Include="..\ElectronicDiary.SchoolDayStorage\ElectronicDiary.SchoolDayStorage.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="images\icon.ico" />
   </ItemGroup>
 

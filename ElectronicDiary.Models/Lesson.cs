@@ -20,7 +20,6 @@
             Homework = homework;
             StartTime = startTime;
             EndTime = endTime;
-
         }
         /// <summary>
         /// Краткая форма создания

@@ -4,9 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElectronicDiary.DesktopClient.Windows"
+        xmlns:userControls="clr-namespace:ElectronicDiary.DesktopClient.Controls"
         mc:Ignorable="d"
-        Title="Дневник ученика" Height="450" Width="800" Icon="/ElectronicDiary.DesktopClient;component/images/icon.ico">
+        Title="Дневник ученика" Height="900" Width="1600" Icon="/ElectronicDiary.DesktopClient;component/images/icon.ico">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Visibility="Visible" x:Name="menu">
+            <MenuItem Header="Расписание">
+                <MenuItem Header="Обновить и показать"/>
+            </MenuItem>
+            <MenuItem Header="Домашние задания">
+                <MenuItem Header="Обновить и показать"/>
+            </MenuItem>
+            <MenuItem Header="Оценки">
+                <MenuItem Header="Обновить и показать"/>
+            </MenuItem>
+        </Menu>
+        <ListBox x:Name="lb" MouseDoubleClick="_lb_MouseDoubleClick">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <userControls:LessonControl/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>
