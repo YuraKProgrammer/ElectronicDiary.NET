@@ -11,7 +11,12 @@ namespace ElectronicDiary.SchoolDayStorage
     {
         public SchoolDay Load(DateTime dateTime)
         {
-            return new SchoolDay(new List<Lesson>(){new Lesson("Математика",LessonType.Basic,"Сложение","Не задано",new TimePoint(10,10),new TimePoint(10,50))},new Date(10,10,2020));
+            return new SchoolDay(new List<Lesson>()
+            {
+                new Lesson("Математика",LessonType.Basic,"Сложение","Не задано",new TimePoint(8,30),new TimePoint(9,10)),
+                new Lesson("Русский",LessonType.Basic,"Написание букв","Не задано",new TimePoint(9,30),new TimePoint(10,10))
+            }
+            ,new Date(10,10,2020));
         }
 
         public void Save(SchoolDay schoolDay)

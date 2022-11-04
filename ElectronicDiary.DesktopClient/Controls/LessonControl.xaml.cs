@@ -21,38 +21,73 @@ namespace ElectronicDiary.DesktopClient.Controls
     /// </summary>
     public partial class LessonControl : UserControl
     {
-        public Lesson Lesson;
+        private Lesson _lesson;
+        public Lesson Lesson
+        {
+            get
+            {
+                return _lesson;
+            }
+            set
+            {
+                _lesson = value;
+                Title.Text = _lesson.Title+" ";
+                Homework.Text = " "+_lesson.Homework+" ";
+                if (_lesson.Grades != null && _lesson.Grades.Count>0)
+                {
+                    Grade.Text = _lesson.Grades[0].ToString();
+                }
+                StartTime.Text = TimePointToString(_lesson.StartTime);
+                EndTime.Text = TimePointToString(_lesson.EndTime);
+                switch (_lesson.lessonType)
+                {
+                    case Models.LessonType.Basic:
+                        LessonType.Text = "Обычный";
+                        break;
+                    case Models.LessonType.Additional:
+                        LessonType.Text = "Дополнительный";
+                        break;
+                    case Models.LessonType.Paid:
+                        LessonType.Text = "Платный";
+                        break;
+                }
+            }
+        }
         private void LessonControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             Lesson = DataContext as Lesson;
         }
 
-        public LessonControl(Lesson lesson)
+        public LessonControl(Lesson lesson) : this()
         {
             InitializeComponent();
-            Title.Text = lesson.Title;
-            Homework.Text = lesson.Homework;
+            _lesson = lesson;
+            Title.Text = lesson.Title + " ";
+            Homework.Text = " "+lesson.Homework + " ";
             if (lesson.Grades != null)
             {
                 Grade.Text = lesson.Grades.ToString();
             }
             StartTime.Text = TimePointToString(lesson.StartTime);
             EndTime.Text = TimePointToString(lesson.EndTime);
+            switch (lesson.lessonType)
+            {
+                case Models.LessonType.Basic:
+                    LessonType.Text = "Обычный";
+                    break;
+                case Models.LessonType.Additional:
+                    LessonType.Text = "Дополнительный";
+                    break;
+                case Models.LessonType.Paid:
+                    LessonType.Text = "Платный";
+                    break;
+            }
         }
      
         public LessonControl()
         {
             InitializeComponent();
             DataContextChanged += LessonControl_DataContextChanged;
-            Lesson = new Lesson("Математика", LessonType.Basic, "Сложение", "Не задано", new TimePoint(10, 10), new TimePoint(10, 50));
-            Title.Text = Lesson.Title;
-            Homework.Text = Lesson.Homework;
-            if (Lesson.Grades != null)
-            {
-                Grade.Text = Lesson.Grades.ToString();
-            }
-            StartTime.Text = TimePointToString(Lesson.StartTime);
-            EndTime.Text = TimePointToString(Lesson.EndTime);        
         }
 
         public String TimePointToString(TimePoint timePoint)

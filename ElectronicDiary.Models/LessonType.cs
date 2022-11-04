@@ -9,7 +9,6 @@ namespace ElectronicDiary.Models
     public enum LessonType
     {
         Basic,
-        GeneralDevelopmental,
         Additional,
         Paid
     }
