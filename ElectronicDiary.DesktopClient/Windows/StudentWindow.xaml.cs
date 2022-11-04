@@ -1,4 +1,6 @@
-﻿using ElectronicDiary.SchoolDayStorage;
+﻿using ElectronicDiary.DesktopClient.Controls;
+using ElectronicDiary.Models;
+using ElectronicDiary.SchoolDayStorage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +23,15 @@ namespace ElectronicDiary.DesktopClient.Windows
     public partial class StudentWindow : Window
     {
         public ISchoolDayStorage schoolDayStorage = new TempSchoolDayStorage();
-        public StudentWindow()
+        public StudentWindow(Account account)
         {
             InitializeComponent();
+            Name.Text = account.Surname + " " + account.Name + " " + account.Patronymic;
+            var list = new List<LessonControl>();
+            foreach (var les in schoolDayStorage.Load(DateTime.Now).Schedule)
+            {
+                list.Add(new LessonControl(les));
+            }
             lb.ItemsSource = schoolDayStorage.Load(DateTime.Now).Schedule;
         }
 

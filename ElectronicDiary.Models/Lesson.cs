@@ -20,6 +20,7 @@
             Homework = homework;
             StartTime = startTime;
             EndTime = endTime;
+            Grades = new List<Grade>();
         }
         /// <summary>
         /// Краткая форма создания
@@ -29,6 +30,7 @@
             Title = title;
             StartTime = startTime;
             EndTime = endTime;
+            Grades = new List<Grade>();
         }
 
         public void SetTime1(TimePoint startTime, TimePoint endTime)

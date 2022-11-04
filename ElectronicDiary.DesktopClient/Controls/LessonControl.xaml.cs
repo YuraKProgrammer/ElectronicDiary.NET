@@ -27,10 +27,24 @@ namespace ElectronicDiary.DesktopClient.Controls
             Lesson = DataContext as Lesson;
         }
 
+        public LessonControl(Lesson lesson)
+        {
+            InitializeComponent();
+            Title.Text = lesson.Title;
+            Homework.Text = lesson.Homework;
+            if (lesson.Grades != null)
+            {
+                Grade.Text = lesson.Grades.ToString();
+            }
+            StartTime.Text = TimePointToString(lesson.StartTime);
+            EndTime.Text = TimePointToString(lesson.EndTime);
+        }
+     
         public LessonControl()
         {
             InitializeComponent();
             DataContextChanged += LessonControl_DataContextChanged;
+            Lesson = new Lesson("Математика", LessonType.Basic, "Сложение", "Не задано", new TimePoint(10, 10), new TimePoint(10, 50));
             Title.Text = Lesson.Title;
             Homework.Text = Lesson.Homework;
             if (Lesson.Grades != null)
@@ -38,7 +52,7 @@ namespace ElectronicDiary.DesktopClient.Controls
                 Grade.Text = Lesson.Grades.ToString();
             }
             StartTime.Text = TimePointToString(Lesson.StartTime);
-            EndTime.Text = TimePointToString(Lesson.EndTime);
+            EndTime.Text = TimePointToString(Lesson.EndTime);        
         }
 
         public String TimePointToString(TimePoint timePoint)
