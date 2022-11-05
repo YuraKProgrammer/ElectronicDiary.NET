@@ -14,7 +14,8 @@ namespace ElectronicDiary.SchoolDayStorage
             return new SchoolDay(new List<Lesson>()
             {
                 new Lesson("Математика",LessonType.Basic,"Сложение","Не задано",new TimePoint(8,30),new TimePoint(9,10)),
-                new Lesson("Русский",LessonType.Basic,"Написание букв","Не задано",new TimePoint(9,30),new TimePoint(10,10))
+                new Lesson("Русский язык",LessonType.Basic,"Написание букв","Не задано",new TimePoint(9,30),new TimePoint(10,10)),
+                new Lesson("Окружающий мир",LessonType.Basic,"Планета Земля","Не задано",new TimePoint(10,30),new TimePoint(11,10))
             }
             ,new Date(10,10,2020));
         }
