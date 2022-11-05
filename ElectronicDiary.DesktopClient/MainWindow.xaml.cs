@@ -1,5 +1,6 @@
 ﻿using ElectronicDiary.DesktopClient.Windows;
 using ElectronicDiary.Models;
+using ElectronicDiary.SchoolDayStorage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace ElectronicDiary.DesktopClient
         private Account studentAccount;
         private Account parentAccount;
         private Account teacherAccount;
+        private ISchoolDayStorage schoolDayStorage = new TempSchoolDayStorage();
         public MainWindow()
         {
             InitializeComponent();
@@ -38,12 +40,12 @@ namespace ElectronicDiary.DesktopClient
             StudentWindow window = new StudentWindow(studentAccount);
             window.Show();
         }
-        private void TeacherClick(object sender, RoutedEventArgs e)
+        private void ParentClick(object sender, RoutedEventArgs e)
         {
-            StudentWindow window = new StudentWindow(studentAccount);
+            ParentWindow window = new ParentWindow(parentAccount,studentAccount);
             window.Show();
         }
-        private void ParentClick(object sender, RoutedEventArgs e)
+        private void TeacherClick(object sender, RoutedEventArgs e)
         {
             StudentWindow window = new StudentWindow(studentAccount);
             window.Show();

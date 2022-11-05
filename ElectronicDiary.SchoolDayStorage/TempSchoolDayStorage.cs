@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,19 +10,37 @@ namespace ElectronicDiary.SchoolDayStorage
 {
     public class TempSchoolDayStorage : ISchoolDayStorage
     {
+        private List<SchoolDay> schoolDays = new List<SchoolDay>();
+        private BinaryFormatter formatter = new BinaryFormatter();  
         public SchoolDay Load(DateTime dateTime)
         {
-            return new SchoolDay(new List<Lesson>()
-            {
-                new Lesson("Математика",LessonType.Basic,"Сложение","Не задано",new TimePoint(8,30),new TimePoint(9,10)),
-                new Lesson("Русский язык",LessonType.Basic,"Написание букв","Не задано",new TimePoint(9,30),new TimePoint(10,10)),
-                new Lesson("Окружающий мир",LessonType.Basic,"Планета Земля","Не задано",new TimePoint(10,30),new TimePoint(11,10))
-            }
-            ,new Date(10,10,2020));
+            LoadAllSchoolDays();
+            var sd = schoolDays
+                .Where(sd => sd.Date.Year == dateTime.Year)
+                .Where(sd => sd.Date.Month == dateTime.Month)
+                .Where(sd => sd.Date.Day == dateTime.Day)
+                .ToList()
+                .First();
+            return sd;
+        }
+
+        private void LoadAllSchoolDays()
+        {
+            if (File.Exists("D:\\ElectronicDiary.dat"))
+                using (FileStream fs = new FileStream("D:\\ElectronicDiary.dat", FileMode.OpenOrCreate))
+                {
+                    schoolDays = (List<SchoolDay>)formatter.Deserialize(fs);
+                }
         }
 
         public void Save(SchoolDay schoolDay)
         {
+            LoadAllSchoolDays();
+            schoolDays.Add(schoolDay);
+            using (FileStream fs = new FileStream("D:\\ElectronicDiary.dat", FileMode.OpenOrCreate))
+            {
+                formatter.Serialize(fs, schoolDays);
+            }
         }
     }
 }

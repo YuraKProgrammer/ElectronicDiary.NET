@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ElectronicDiary.Models
 {
+    [Serializable]
     public class TimePoint
     {
         public int Hour { get; set; }

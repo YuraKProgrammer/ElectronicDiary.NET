@@ -6,15 +6,11 @@ using System.Threading.Tasks;
 
 namespace ElectronicDiary.Models
 {
+    [Serializable]
     public class SchoolDay
     {
         public List<Lesson> Schedule { get; set; }
         public ElectronicDiary.Models.Date Date { get; set; }
-        public SchoolDay(ElectronicDiary.Models.Date date)
-        {
-            Date = date;
-            Schedule = new List<Lesson>();
-        }
         public SchoolDay(List<Lesson> schedule, ElectronicDiary.Models.Date date)
         {
             Schedule = schedule;

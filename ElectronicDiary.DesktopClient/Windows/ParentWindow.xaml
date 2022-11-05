@@ -1,0 +1,42 @@
+﻿<Window x:Class="ElectronicDiary.DesktopClient.Windows.ParentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElectronicDiary.DesktopClient.Windows"
+        xmlns:userControls="clr-namespace:ElectronicDiary.DesktopClient.Controls"
+        mc:Ignorable="d"
+        Title="Дневник родителя" Height="900" Width="1600" Icon="/ElectronicDiary.DesktopClient;component/images/icon.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Menu Visibility="Visible" x:Name="menu">
+            <MenuItem Header="Расписание">
+                <MenuItem Header="Обновить и показать"/>
+            </MenuItem>
+            <MenuItem Header="Домашние задания">
+                <MenuItem Header="Обновить и показать"/>
+            </MenuItem>
+            <MenuItem Header="Оценки">
+                <MenuItem Header="Обновить и показать"/>
+            </MenuItem>
+            <TextBlock x:Name="Name"/>
+            <TextBlock Text="(Родитель)"/>
+            <TextBlock x:Name="StudentName"/>
+            <TextBlock Text="(Ученик)"/>
+            </Menu>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <ListBox x:Name="lb" MouseDoubleClick="_lb_MouseDoubleClick" Height="Auto" Width="Auto">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <userControls:LessonControl/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </Grid>
+</Window>

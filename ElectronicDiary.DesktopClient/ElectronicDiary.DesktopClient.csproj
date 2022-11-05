@@ -20,4 +20,17 @@
     <Resource Include="images\icon.ico" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Windows\ParentWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Windows\ParentWindow.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>

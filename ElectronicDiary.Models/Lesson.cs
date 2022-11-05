@@ -1,5 +1,6 @@
 ﻿namespace ElectronicDiary.Models
 {
+    [Serializable]
     public class Lesson : IsOnSchedule
     {
         public string Title { get; set; }
