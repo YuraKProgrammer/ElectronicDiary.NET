@@ -27,18 +27,54 @@ namespace ElectronicDiary.DesktopClient.Windows
         {
             InitializeComponent();
             Name.Text = account.Surname + " " + account.Name + " " + account.Patronymic;
-            var list = new List<LessonControl>();
-            foreach (var les in schoolDayStorage.Load(DateTime.Now).Schedule)
+            if (schoolDayStorage.Load(DateTime.Now) != null)
             {
-                list.Add(new LessonControl(les));
+                lb.ItemsSource = schoolDayStorage.Load(DateTime.Now).Schedule;
             }
-            lb.ItemsSource = schoolDayStorage.Load(DateTime.Now).Schedule;
+            if (schoolDayStorage.Load(DateTime.Now) != null)
+            {
+                var l = new List<LessonTask>();
+                foreach (var les in schoolDayStorage.Load(DateTime.Now).Schedule)
+                {
+                    l.Add(new LessonTask(les.Title, les.Homework));
+                }
+                lb2.ItemsSource = l;
+            }
         }
 
         public void _lb_MouseDoubleClick(object sender, RoutedEventArgs e)
         {
             var window = new ViewLessonWindow((Lesson)lb.SelectedItem);
             window.Show();
+        }
+
+        public void _shedule_reload(object sender, RoutedEventArgs e)
+        {
+            if (schoolDayStorage.Load(DateTime.Now) != null)
+            {
+                lb.ItemsSource = schoolDayStorage.Load(DateTime.Now).Schedule;
+            }
+            else
+            {
+                MessageBox.Show("Расписания на сегодня нет", "Сообщение");   
+            }
+        }
+
+        public void _homework_reload(object sender, RoutedEventArgs e)
+        {
+            if (schoolDayStorage.Load(DateTime.Now) != null)
+            {
+                var l = new List<LessonTask>();
+                foreach(var les in schoolDayStorage.Load(DateTime.Now).Schedule)
+                {
+                    l.Add(new LessonTask(les.Title,les.Homework));
+                }
+                lb2.ItemsSource = l;
+            }
+            else
+            {
+                MessageBox.Show("Домашних заданий на сегодня нет", "Сообщение");
+            }
         }
     }
 }

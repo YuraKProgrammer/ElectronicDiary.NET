@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Controls\HomeworkControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\LessonControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -18,6 +21,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Controls\HomeworkControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\LessonControl.xaml">
       <SubType>Designer</SubType>
     </Page>

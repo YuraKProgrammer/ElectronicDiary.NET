@@ -15,7 +15,7 @@
         <StackPanel Grid.Row="0">
             <Menu Visibility="Visible" x:Name="menu">
             <MenuItem Header="Расписание">
-                <MenuItem Header="Обновить и показать"/>
+                <MenuItem Header="Обновить и показать" Click="_shedule_reload"/>
             </MenuItem>
             <MenuItem Header="Домашние задания">
                 <MenuItem Header="Обновить и показать"/>

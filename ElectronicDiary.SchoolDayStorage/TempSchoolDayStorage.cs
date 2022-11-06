@@ -20,7 +20,7 @@ namespace ElectronicDiary.SchoolDayStorage
                 .Where(sd => sd.Date.Month == dateTime.Month)
                 .Where(sd => sd.Date.Day == dateTime.Day)
                 .ToList()
-                .First();
+                .FirstOrDefault();
             return sd;
         }
 

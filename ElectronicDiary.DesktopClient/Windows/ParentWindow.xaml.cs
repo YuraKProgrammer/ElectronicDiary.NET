@@ -28,18 +28,28 @@ namespace ElectronicDiary.DesktopClient.Windows
             InitializeComponent();
             Name.Text = parentAccount.Surname + " " + parentAccount.Name + " " + parentAccount.Patronymic;
             StudentName.Text = studentAccount.Surname + " " + studentAccount.Name + " " + studentAccount.Patronymic;
-            var list = new List<LessonControl>();
-            foreach (var les in schoolDayStorage.Load(DateTime.Now).Schedule)
+            if (schoolDayStorage.Load(DateTime.Now) != null)
             {
-                list.Add(new LessonControl(les));
+                lb.ItemsSource = schoolDayStorage.Load(DateTime.Now).Schedule;
             }
-            lb.ItemsSource = schoolDayStorage.Load(DateTime.Now).Schedule;
         }
 
         public void _lb_MouseDoubleClick(object sender, RoutedEventArgs e)
         {
             var window = new ViewLessonWindow((Lesson)lb.SelectedItem);
             window.Show();
+        }
+
+        public void _shedule_reload(object sender, RoutedEventArgs e)
+        {
+            if (schoolDayStorage.Load(DateTime.Now) != null)
+            {
+                lb.ItemsSource = schoolDayStorage.Load(DateTime.Now).Schedule;
+            }
+            else
+            {
+                MessageBox.Show("Расписания на сегодня нет", "Сообщение");
+            }
         }
     }
 }
