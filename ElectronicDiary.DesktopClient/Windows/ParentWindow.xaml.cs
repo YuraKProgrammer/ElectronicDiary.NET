@@ -51,5 +51,39 @@ namespace ElectronicDiary.DesktopClient.Windows
                 MessageBox.Show("Расписания на сегодня нет", "Сообщение");
             }
         }
+
+        public void _homework_reload(object sender, RoutedEventArgs e)
+        {
+            if (schoolDayStorage.Load(DateTime.Now) != null)
+            {
+                var l = new List<LessonTask>();
+                foreach (var les in schoolDayStorage.Load(DateTime.Now).Schedule)
+                {
+                    l.Add(new LessonTask(les.Title, les.Homework));
+                }
+                lb2.ItemsSource = l;
+            }
+            else
+            {
+                MessageBox.Show("Домашних заданий на сегодня нет", "Сообщение");
+            }
+        }
+
+        public void _grades_reload(object sender, RoutedEventArgs e)
+        {
+            if (schoolDayStorage.Load(DateTime.Now) != null)
+            {
+                var l = new List<LessonGrade>();
+                foreach (var les in schoolDayStorage.Load(DateTime.Now).Schedule)
+                {
+                    l.Add(new LessonGrade(les.Title, les.Grades));
+                }
+                lb3.ItemsSource = l;
+            }
+            else
+            {
+                MessageBox.Show("Оценок за сегодня нет", "Сообщение");
+            }
+        }
     }
 }

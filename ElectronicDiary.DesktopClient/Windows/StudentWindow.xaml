@@ -26,7 +26,7 @@
                 <MenuItem Header="Обновить и показать" Click="_homework_reload"/>
             </MenuItem>
             <MenuItem Header="Оценки">
-                <MenuItem Header="Обновить и показать"/>
+                <MenuItem Header="Обновить и показать" Click="_grades_reload"/>
             </MenuItem>
             <TextBlock x:Name="Name"/>
             <TextBlock Text="(Ученик)"/>
@@ -58,6 +58,15 @@
         </StackPanel>
         <StackPanel Grid.Row="5">
             <TextBlock Text="Оценки:"/>
+        </StackPanel>
+        <StackPanel Grid.Row="6">
+            <ListBox x:Name="lb3" Height="Auto" Width="Auto">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <userControls:GradeControl/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </StackPanel>
     </Grid>
 </Window>

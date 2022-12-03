@@ -11,6 +11,11 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
             <Menu Visibility="Visible" x:Name="menu">
@@ -30,10 +35,37 @@
             </Menu>
         </StackPanel>
         <StackPanel Grid.Row="1">
+            <TextBlock Text="Расписание:"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
             <ListBox x:Name="lb" MouseDoubleClick="_lb_MouseDoubleClick" Height="Auto" Width="Auto">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <userControls:LessonControl/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel Grid.Row="3">
+            <TextBlock Text="Домашние задания:"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4">
+            <ListBox x:Name="lb2" Height="Auto" Width="Auto">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <userControls:HomeworkControl/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel Grid.Row="5">
+            <TextBlock Text="Оценки:"/>
+        </StackPanel>
+        <StackPanel Grid.Row="6">
+            <ListBox x:Name="lb3" Height="Auto" Width="Auto">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <userControls:GradeControl/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

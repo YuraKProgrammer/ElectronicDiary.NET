@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Controls\GradeControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\HomeworkControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -16,11 +19,17 @@
     <Compile Update="Windows\StudentWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\TeacherWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\ViewLessonWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Controls\GradeControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\HomeworkControl.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -34,6 +43,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\StudentWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\TeacherWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\ViewLessonWindow.xaml">

@@ -50,5 +50,33 @@ namespace ElectronicDiary.Models
             }
             return "";
         }
+
+        public static String GradeToString(Grade grade)
+        {
+            switch (grade)
+            {
+                case Models.Grade.Five:
+                    return "5";
+                case Models.Grade.Four:
+                    return "4";
+                case Models.Grade.Three:
+                    return "3";
+                case Models.Grade.Two:
+                    return "2";
+                case Models.Grade.Missing:
+                    return "Н - отсутствие";
+            }
+            return "";
+        }
+
+        public static String GradesToString(List<Grade> grades)
+        {
+            var s = "";
+            foreach(Grade grade in grades)
+            {
+                s = s + GradeToString(grade)+" ";
+            }
+            return s;
+        }
     }
 }

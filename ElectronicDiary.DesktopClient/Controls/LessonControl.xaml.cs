@@ -35,7 +35,7 @@ namespace ElectronicDiary.DesktopClient.Controls
                 Homework.Text = " "+_lesson.Homework+" ";
                 if (_lesson.Grades != null && _lesson.Grades.Count>0)
                 {
-                    Grade.Text = _lesson.Grades[0].ToString();
+                    Grade.Text = ToStringer.GradesToString(_lesson.Grades);
                 }
                 StartTime.Text = ToStringer.TimePointToString(_lesson.StartTime);
                 EndTime.Text = ToStringer.TimePointToString(_lesson.EndTime);
@@ -55,7 +55,7 @@ namespace ElectronicDiary.DesktopClient.Controls
             Homework.Text = " "+lesson.Homework + " ";
             if (lesson.Grades != null && _lesson.Grades.Count > 0)
             {
-                Grade.Text = lesson.Grades[0].ToString();
+                Grade.Text = ToStringer.GradesToString(lesson.Grades);
             }
             StartTime.Text = ToStringer.TimePointToString(lesson.StartTime);
             EndTime.Text = ToStringer.TimePointToString(lesson.EndTime);
