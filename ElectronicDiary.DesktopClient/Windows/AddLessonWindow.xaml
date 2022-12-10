@@ -25,31 +25,31 @@
             <TextBlock Text="Название:" FontSize="20"/>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBox Text="" FontSize="20" Width="200"/>
+            <TextBox Text="" FontSize="20" Width="200" x:Name="_Title"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0">
             <TextBlock Text="Час начала:" FontSize="20"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBox Text="" FontSize="20" Width="200"/>
+            <TextBox Text="" FontSize="20" Width="200" x:Name="_StartHour"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="0">
             <TextBlock Text="Минута начала:" FontSize="20"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="1">
-            <TextBox Text="" FontSize="20" Width="200"/>
+            <TextBox Text="" FontSize="20" Width="200" x:Name="_StartMinute"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="0">
             <TextBlock Text="Час конца:" FontSize="20"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="1">
-            <TextBox Text="" FontSize="20" Width="200"/>
+            <TextBox Text="" FontSize="20" Width="200" x:Name="_EndHour"/>
         </StackPanel>
         <StackPanel Grid.Row="4" Grid.Column="0">
             <TextBlock Text="Минута конца:" FontSize="20"/>
         </StackPanel>
         <StackPanel Grid.Row="4" Grid.Column="1">
-            <TextBox Text="" FontSize="20" Width="200"/>
+            <TextBox Text="" FontSize="20" Width="200" x:Name="_EndMinute"/>
         </StackPanel>
         <StackPanel Grid.Row="5" Grid.Column="0">
             <Button Content="Добавить" FontSize="20" Width="150" Click="_Add"/>

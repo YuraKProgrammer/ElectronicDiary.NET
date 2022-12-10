@@ -57,9 +57,9 @@ namespace ElectronicDiary.DesktopClient.Controls
             {
                 Grade.Text = ToStringer.GradesToString(lesson.Grades);
             }
-            StartTime.Text = ToStringer.TimePointToString(lesson.StartTime);
-            EndTime.Text = ToStringer.TimePointToString(lesson.EndTime);
-            LessonType.Text = ToStringer.LessonTypeToString(lesson.lessonType);
+            StartTime.Text = ToStringer.TimePointToString(lesson.StartTime) + " ";
+            EndTime.Text = ToStringer.TimePointToString(lesson.EndTime) + " ";
+            LessonType.Text = " " + ToStringer.LessonTypeToString(lesson.lessonType) + " ";
         }
      
         public LessonControl()

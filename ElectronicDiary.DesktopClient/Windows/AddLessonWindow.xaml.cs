@@ -32,14 +32,33 @@ namespace ElectronicDiary.DesktopClient.Windows
         public void _Add(object sender, RoutedEventArgs e)
         {
             List<SchoolDay> schoolDays = storage.LoadAll();
-            foreach(var sd in schoolDays)
+            foreach (var sd in schoolDays)
             {
-                if (Comparer.CompareDateAndDateTime(sd.Date,DateTime))
+                if (Comparer.CompareDateAndDateTime(sd.Date, DateTime))
                 {
-                    var day = schoolDays.Where(sd => Comparer.CompareDateAndDateTime(sd.Date,DateTime)).FirstOrDefault();
-                    
+                    var day1 = schoolDays.Where(sd => Comparer.CompareDateAndDateTime(sd.Date, DateTime)).FirstOrDefault();
+                    storage.RemoveDay(day1);
+                    Lesson les1 = new Lesson(
+                        _Title.Text,
+                        new TimePoint(Int32.Parse(_StartHour.Text), Int32.Parse(_StartMinute.Text)),
+                        new TimePoint(Int32.Parse(_EndHour.Text), Int32.Parse(_EndMinute.Text)));
+                    day1.AddToShedule(les1);
+                    storage.Save(day1);
                 }
             }
+            var day = new SchoolDay(new List<Lesson>(), new Date(DateTime.Day,DateTime.Month, DateTime.Year));
+            Lesson les = new Lesson(
+                        _Title.Text,
+                        new TimePoint(Int32.Parse(_StartHour.Text), Int32.Parse(_StartMinute.Text)),
+                        new TimePoint(Int32.Parse(_EndHour.Text), Int32.Parse(_EndMinute.Text)));
+            day.AddToShedule(les);
+            storage.Save(day);
+            this.Close();
+        }
+
+        public void _Cancel(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

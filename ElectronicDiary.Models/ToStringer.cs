@@ -42,11 +42,11 @@ namespace ElectronicDiary.Models
             switch (lessonType)
             {
                 case Models.LessonType.Basic:
-                    return "Обычный";
+                    return " Обычный";
                 case Models.LessonType.Additional:
-                    return "Дополнительный";
+                    return " Дополнительный";
                 case Models.LessonType.Paid:
-                    return "Платный";
+                    return " Платный";
             }
             return "";
         }

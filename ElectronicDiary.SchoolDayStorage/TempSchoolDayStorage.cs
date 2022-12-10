@@ -49,9 +49,14 @@ namespace ElectronicDiary.SchoolDayStorage
             }
         }
 
-        public void UpdateDay(SchoolDay previousSchoolDay, SchoolDay currentSchoolDay)
+        public void RemoveDay(SchoolDay schoolDay)
         {
-
+            LoadAllSchoolDays();
+            schoolDays.Remove(schoolDay);
+            using (FileStream fs = new FileStream("D:\\ElectronicDiary.dat", FileMode.OpenOrCreate))
+            {
+                formatter.Serialize(fs, schoolDays);
+            }
         }
     }
 }

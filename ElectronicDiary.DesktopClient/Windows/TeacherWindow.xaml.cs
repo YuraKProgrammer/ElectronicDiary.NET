@@ -95,7 +95,7 @@ namespace ElectronicDiary.DesktopClient.Windows
 
         public void _addLesson(object sender, RoutedEventArgs e)
         {
-            Window window = new AddLessonWindow();
+            Window window = new AddLessonWindow(DateTime.UtcNow);
             window.Show();
         }
         public void _addSchedule(object sender, RoutedEventArgs e)
