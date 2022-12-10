@@ -11,5 +11,6 @@ namespace ElectronicDiary.SchoolDayStorage
     {
         public SchoolDay Load(DateTime dateTime);
         public void Save(SchoolDay schoolDay);
+        public List<SchoolDay> LoadAll();
     }
 }

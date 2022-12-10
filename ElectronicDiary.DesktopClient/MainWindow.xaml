@@ -12,18 +12,26 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
             <TextBlock Text="Войти как: "/>
         </StackPanel>
         <StackPanel Grid.Row="1">
-        <Button Content="Ученик" Click="StudentClick"/>
+            <Button Content="Ученик" Click="StudentClick"/>
         </StackPanel>
         <StackPanel Grid.Row="2">
-        <Button Content="Родитель" Click="ParentClick"/>
+            <Button Content="Родитель" Click="ParentClick"/>
         </StackPanel>
         <StackPanel Grid.Row="3">
-        <Button Content="Учитель" Click="TeacherClick"/>
+            <Button Content="Учитель" Click="TeacherClick"/>
         </StackPanel>
-         </Grid>
+        <StackPanel Grid.Row="4">
+            <TextBlock Text="Система:"/>
+        </StackPanel>
+        <StackPanel Grid.Row="5">
+            <Button Content="О программе" Click="AboutClick"/>
+        </StackPanel>
+    </Grid>
 </Window>

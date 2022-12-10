@@ -33,6 +33,12 @@ namespace ElectronicDiary.SchoolDayStorage
                 }
         }
 
+        public List<SchoolDay> LoadAll()
+        {
+            LoadAllSchoolDays();
+            return schoolDays;
+        }
+
         public void Save(SchoolDay schoolDay)
         {
             LoadAllSchoolDays();
@@ -41,6 +47,11 @@ namespace ElectronicDiary.SchoolDayStorage
             {
                 formatter.Serialize(fs, schoolDays);
             }
+        }
+
+        public void UpdateDay(SchoolDay previousSchoolDay, SchoolDay currentSchoolDay)
+        {
+
         }
     }
 }

@@ -47,7 +47,12 @@ namespace ElectronicDiary.DesktopClient
         }
         private void TeacherClick(object sender, RoutedEventArgs e)
         {
-            StudentWindow window = new StudentWindow(studentAccount);
+            TeacherWindow window = new TeacherWindow(teacherAccount);
+            window.Show();
+        }
+        private void AboutClick(object sender, RoutedEventArgs e)
+        {
+            AboutWindow window = new AboutWindow();
             window.Show();
         }
     }

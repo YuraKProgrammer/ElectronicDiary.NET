@@ -4,9 +4,73 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElectronicDiary.DesktopClient.Windows"
+        xmlns:userControls="clr-namespace:ElectronicDiary.DesktopClient.Controls"
         mc:Ignorable="d"
-        Title="TeacherWindow" Height="450" Width="800">
+        Title="Дневник учителя" Height="900" Width="1600" Icon="/ElectronicDiary.DesktopClient;component/images/icon.ico">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Menu Visibility="Visible" x:Name="menu">
+                <MenuItem Header="Расписание">
+                    <MenuItem Header="Обновить и показать" Click="_shedule_reload"/>
+                </MenuItem>
+                <MenuItem Header="Домашние задания">
+                    <MenuItem Header="Обновить и показать" Click="_homework_reload"/>
+                </MenuItem>
+                <MenuItem Header="Оценки">
+                    <MenuItem Header="Обновить и показать" Click="_grades_reload"/>
+                </MenuItem>
+                <MenuItem Header="Добавить">
+                    <MenuItem Header="Добавить урок" Click="_addLesson"/>
+                    <MenuItem Header="Добавить расписание" Click="_addSchedule"/>
+                </MenuItem>
+                <TextBlock x:Name="Name"/>
+                <TextBlock Text="(Учитель)"/>
+            </Menu>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Расписание:"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <ListBox x:Name="lb" MouseDoubleClick="_lb_MouseDoubleClick" Height="Auto" Width="Auto">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <userControls:LessonControl/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel Grid.Row="3">
+            <TextBlock Text="Домашние задания:"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4">
+            <ListBox x:Name="lb2" Height="Auto" Width="Auto">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <userControls:HomeworkControl/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel Grid.Row="5">
+            <TextBlock Text="Оценки:"/>
+        </StackPanel>
+        <StackPanel Grid.Row="6">
+            <ListBox x:Name="lb3" Height="Auto" Width="Auto">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <userControls:GradeControl/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
     </Grid>
 </Window>

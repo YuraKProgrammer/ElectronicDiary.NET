@@ -1,0 +1,61 @@
+﻿<Window x:Class="ElectronicDiary.DesktopClient.Windows.AddLessonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElectronicDiary.DesktopClient.Windows"
+        mc:Ignorable="d"
+        Title="Добавление урока" Height="230" Width="360" Icon="/ElectronicDiary.DesktopClient;component/images/icon.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <TextBlock Text="Название:" FontSize="20"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <TextBox Text="" FontSize="20" Width="200"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <TextBlock Text="Час начала:" FontSize="20"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBox Text="" FontSize="20" Width="200"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <TextBlock Text="Минута начала:" FontSize="20"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <TextBox Text="" FontSize="20" Width="200"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="0">
+            <TextBlock Text="Час конца:" FontSize="20"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <TextBox Text="" FontSize="20" Width="200"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.Column="0">
+            <TextBlock Text="Минута конца:" FontSize="20"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.Column="1">
+            <TextBox Text="" FontSize="20" Width="200"/>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Grid.Column="0">
+            <Button Content="Добавить" FontSize="20" Width="150" Click="_Add"/>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Grid.Column="1">
+            <Button Content="Отмена" FontSize="20" Width="150" Click="_Cancel"/>
+        </StackPanel>
+    </Grid>
+</Window>
