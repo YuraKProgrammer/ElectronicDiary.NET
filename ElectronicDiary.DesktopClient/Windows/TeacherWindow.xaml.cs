@@ -43,7 +43,7 @@ namespace ElectronicDiary.DesktopClient.Windows
 
         public void _lb_MouseDoubleClick(object sender, RoutedEventArgs e)
         {
-            var window = new ViewLessonWindow((Lesson)lb.SelectedItem);
+            var window = new EditLessonWindow((Lesson)lb.SelectedItem);
             window.Show();
         }
 

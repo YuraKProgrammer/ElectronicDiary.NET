@@ -22,6 +22,9 @@
     <Compile Update="Windows\AddLessonWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\EditLessonWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\StudentWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -49,6 +52,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\AddLessonWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\EditLessonWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\ParentWindow.xaml">

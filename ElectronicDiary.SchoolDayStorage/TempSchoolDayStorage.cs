@@ -27,10 +27,24 @@ namespace ElectronicDiary.SchoolDayStorage
         private void LoadAllSchoolDays()
         {
             if (File.Exists("D:\\ElectronicDiary.dat"))
-                using (FileStream fs = new FileStream("D:\\ElectronicDiary.dat", FileMode.OpenOrCreate))
+            {
+                string[] stroki = File.ReadAllLines("D:\\ElectronicDiary.dat");
+                if (stroki.Length > 0)
                 {
-                    schoolDays = (List<SchoolDay>)formatter.Deserialize(fs);
+                    using (FileStream fs = new FileStream("D:\\ElectronicDiary.dat", FileMode.OpenOrCreate))
+                    {
+                        schoolDays = (List<SchoolDay>)formatter.Deserialize(fs);
+                    }
                 }
+                else
+                {
+                    schoolDays = new List<SchoolDay>();
+                }
+            }
+            else
+            {
+                schoolDays = new List<SchoolDay>();
+            }
         }
 
         public List<SchoolDay> LoadAll()
@@ -45,6 +59,7 @@ namespace ElectronicDiary.SchoolDayStorage
             schoolDays.Add(schoolDay);
             using (FileStream fs = new FileStream("D:\\ElectronicDiary.dat", FileMode.OpenOrCreate))
             {
+                fs.SetLength(0);
                 formatter.Serialize(fs, schoolDays);
             }
         }
@@ -52,9 +67,10 @@ namespace ElectronicDiary.SchoolDayStorage
         public void RemoveDay(SchoolDay schoolDay)
         {
             LoadAllSchoolDays();
-            schoolDays.Remove(schoolDay);
+            schoolDays.Remove(schoolDays.Where(sd => Comparer.CompareDates(schoolDay.Date,sd.Date)).FirstOrDefault()); //Не работает
             using (FileStream fs = new FileStream("D:\\ElectronicDiary.dat", FileMode.OpenOrCreate))
             {
+                fs.SetLength(0);
                 formatter.Serialize(fs, schoolDays);
             }
         }
