@@ -33,5 +33,18 @@ namespace ElectronicDiary.Models
             }
             return false;
         }
+
+        public static bool CompareTimePoints(TimePoint timePoint1, TimePoint timePoint2)
+        {
+            if (timePoint1 != null && timePoint2 != null)
+            {
+                if (timePoint1.Hour==timePoint2.Hour && timePoint1.Minute == timePoint2.Minute)
+                {
+                    return true;
+                }
+                return false;
+            }
+            return false;
+        }
     }
 }

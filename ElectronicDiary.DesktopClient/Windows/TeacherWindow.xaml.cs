@@ -43,11 +43,38 @@ namespace ElectronicDiary.DesktopClient.Windows
 
         public void _lb_MouseDoubleClick(object sender, RoutedEventArgs e)
         {
-            var window = new EditLessonWindow((Lesson)lb.SelectedItem);
+            var window = new EditLessonWindow(DateTime.UtcNow,(Lesson)lb.SelectedItem);
             window.Show();
+            update();
         }
 
-        public void _shedule_reload(object sender, RoutedEventArgs e)
+        private void update()
+        {
+            if (schoolDayStorage.Load(DateTime.Now) != null)
+            {
+                lb.ItemsSource = schoolDayStorage.Load(DateTime.Now).Schedule;
+            }
+            if (schoolDayStorage.Load(DateTime.Now) != null)
+            {
+                var l = new List<LessonTask>();
+                foreach (var les in schoolDayStorage.Load(DateTime.Now).Schedule)
+                {
+                    l.Add(new LessonTask(les.Title, les.Homework));
+                }
+                lb2.ItemsSource = l;
+            }
+            if (schoolDayStorage.Load(DateTime.Now) != null)
+            {
+                var l = new List<LessonGrade>();
+                foreach (var les in schoolDayStorage.Load(DateTime.Now).Schedule)
+                {
+                    l.Add(new LessonGrade(les.Title, les.Grades));
+                }
+                lb3.ItemsSource = l;
+            }
+        }
+
+        public void _schedule_reload(object sender, RoutedEventArgs e)
         {
             if (schoolDayStorage.Load(DateTime.Now) != null)
             {
@@ -97,8 +124,9 @@ namespace ElectronicDiary.DesktopClient.Windows
         {
             Window window = new AddLessonWindow(DateTime.UtcNow);
             window.Show();
+            update();
         }
-        public void _addSchedule(object sender, RoutedEventArgs e)
+        public void _addToSchedule(object sender, RoutedEventArgs e)
         {
         }
     }

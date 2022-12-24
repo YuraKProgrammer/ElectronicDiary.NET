@@ -20,7 +20,7 @@
         <StackPanel Grid.Row="0">
             <Menu Visibility="Visible" x:Name="menu">
                 <MenuItem Header="Расписание">
-                    <MenuItem Header="Обновить и показать" Click="_shedule_reload"/>
+                    <MenuItem Header="Обновить и показать" Click="_schedule_reload"/>
                 </MenuItem>
                 <MenuItem Header="Домашние задания">
                     <MenuItem Header="Обновить и показать" Click="_homework_reload"/>
@@ -30,7 +30,7 @@
                 </MenuItem>
                 <MenuItem Header="Добавить">
                     <MenuItem Header="Добавить урок" Click="_addLesson"/>
-                    <MenuItem Header="Добавить расписание" Click="_addSchedule"/>
+                    <MenuItem Header="Добавить в расписание" Click="_addToSchedule"/>
                 </MenuItem>
                 <TextBlock x:Name="Name"/>
                 <TextBlock Text="(Учитель)"/>

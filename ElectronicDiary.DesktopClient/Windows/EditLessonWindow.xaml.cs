@@ -22,11 +22,12 @@ namespace ElectronicDiary.DesktopClient.Windows
     public partial class EditLessonWindow : Window
     {
         public Lesson Lesson;
+        public DateTime DateTime;
         public ISchoolDayStorage storage = new TempSchoolDayStorage();
-        public EditLessonWindow(Lesson lesson)
+        public EditLessonWindow(DateTime dateTime,Lesson lesson)
         {
-            InitializeComponent();
             Lesson = lesson;
+            DateTime = dateTime;
             InitializeComponent();
             Title.Text = lesson.Title;
             Topic.Text = lesson.Topic;
@@ -43,7 +44,20 @@ namespace ElectronicDiary.DesktopClient.Windows
 
         private void _Save(object sender, RoutedEventArgs e)
         {
-            
+            List<SchoolDay> schoolDays = storage.LoadAll();
+            var day1 = schoolDays.Where(sd => Comparer.CompareDateAndDateTime(sd.Date, DateTime)).FirstOrDefault();
+            storage.RemoveDay(day1);
+            var les1 = day1.Schedule.Where(l => Comparer.CompareTimePoints(l.StartTime, Lesson.StartTime) && Comparer.CompareTimePoints(l.EndTime, Lesson.EndTime)).FirstOrDefault();
+            day1.RemoveFromShedule(les1);
+            Lesson les2 = new Lesson(
+                Title.Text,
+                ToLessonTyper.StringToLessonType(LessonType.Text),
+                Topic.Text,
+                Homework.Text,
+                Lesson.StartTime,
+                Lesson.EndTime); 
+            day1.AddToShedule(les2);
+            storage.Save(day1);
             this.Close();
         }
 
@@ -54,6 +68,12 @@ namespace ElectronicDiary.DesktopClient.Windows
 
         private void _Delete(object sender, RoutedEventArgs e)
         {
+            List<SchoolDay> schoolDays = storage.LoadAll();
+            var day1 = schoolDays.Where(sd => Comparer.CompareDateAndDateTime(sd.Date, DateTime)).FirstOrDefault();
+            storage.RemoveDay(day1);
+            var les1 = day1.Schedule.Where(l => Comparer.CompareTimePoints(l.StartTime, Lesson.StartTime) && Comparer.CompareTimePoints(l.EndTime, Lesson.EndTime)).FirstOrDefault();
+            day1.RemoveFromShedule(les1);
+            storage.Save(day1);
             this.Close();
         }
     }
