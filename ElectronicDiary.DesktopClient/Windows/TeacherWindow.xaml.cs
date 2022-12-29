@@ -22,51 +22,53 @@ namespace ElectronicDiary.DesktopClient.Windows
     public partial class TeacherWindow : Window
     {
         public ISchoolDayStorage schoolDayStorage = new TempSchoolDayStorage();
+        public DateTime currentDate = DateTime.Now;
         public TeacherWindow(Account account)
         {
             InitializeComponent();
             Name.Text = account.Surname + " " + account.Name + " " + account.Patronymic;
-            if (schoolDayStorage.Load(DateTime.Now) != null)
+            if (schoolDayStorage.Load(currentDate) != null)
             {
                 lb.ItemsSource = schoolDayStorage.Load(DateTime.Now).Schedule;
             }
-            if (schoolDayStorage.Load(DateTime.Now) != null)
+            if (schoolDayStorage.Load(currentDate) != null)
             {
                 var l = new List<LessonTask>();
-                foreach (var les in schoolDayStorage.Load(DateTime.Now).Schedule)
+                foreach (var les in schoolDayStorage.Load(currentDate).Schedule)
                 {
                     l.Add(new LessonTask(les.Title, les.Homework));
                 }
                 lb2.ItemsSource = l;
             }
+            _dateTime.Text = currentDate.Day.ToString() + "." + currentDate.Month.ToString() + "." + currentDate.Year.ToString();
         }
 
         public void _lb_MouseDoubleClick(object sender, RoutedEventArgs e)
         {
-            var window = new EditLessonWindow(DateTime.UtcNow,(Lesson)lb.SelectedItem);
+            var window = new EditLessonWindow(currentDate,(Lesson)lb.SelectedItem);
             window.Show();
             update();
         }
 
         private void update()
         {
-            if (schoolDayStorage.Load(DateTime.Now) != null)
+            if (schoolDayStorage.Load(currentDate) != null)
             {
-                lb.ItemsSource = schoolDayStorage.Load(DateTime.Now).Schedule;
+                lb.ItemsSource = schoolDayStorage.Load(currentDate).Schedule;
             }
-            if (schoolDayStorage.Load(DateTime.Now) != null)
+            if (schoolDayStorage.Load(currentDate) != null)
             {
                 var l = new List<LessonTask>();
-                foreach (var les in schoolDayStorage.Load(DateTime.Now).Schedule)
+                foreach (var les in schoolDayStorage.Load(currentDate).Schedule)
                 {
                     l.Add(new LessonTask(les.Title, les.Homework));
                 }
                 lb2.ItemsSource = l;
             }
-            if (schoolDayStorage.Load(DateTime.Now) != null)
+            if (schoolDayStorage.Load(currentDate) != null)
             {
                 var l = new List<LessonGrade>();
-                foreach (var les in schoolDayStorage.Load(DateTime.Now).Schedule)
+                foreach (var les in schoolDayStorage.Load(currentDate).Schedule)
                 {
                     l.Add(new LessonGrade(les.Title, les.Grades));
                 }
@@ -76,9 +78,9 @@ namespace ElectronicDiary.DesktopClient.Windows
 
         public void _schedule_reload(object sender, RoutedEventArgs e)
         {
-            if (schoolDayStorage.Load(DateTime.Now) != null)
+            if (schoolDayStorage.Load(currentDate) != null)
             {
-                lb.ItemsSource = schoolDayStorage.Load(DateTime.Now).Schedule;
+                lb.ItemsSource = schoolDayStorage.Load(currentDate).Schedule;
             }
             else
             {
@@ -88,10 +90,10 @@ namespace ElectronicDiary.DesktopClient.Windows
 
         public void _homework_reload(object sender, RoutedEventArgs e)
         {
-            if (schoolDayStorage.Load(DateTime.Now) != null)
+            if (schoolDayStorage.Load(currentDate) != null)
             {
                 var l = new List<LessonTask>();
-                foreach (var les in schoolDayStorage.Load(DateTime.Now).Schedule)
+                foreach (var les in schoolDayStorage.Load(currentDate).Schedule)
                 {
                     l.Add(new LessonTask(les.Title, les.Homework));
                 }
@@ -105,10 +107,10 @@ namespace ElectronicDiary.DesktopClient.Windows
 
         public void _grades_reload(object sender, RoutedEventArgs e)
         {
-            if (schoolDayStorage.Load(DateTime.Now) != null)
+            if (schoolDayStorage.Load(currentDate) != null)
             {
                 var l = new List<LessonGrade>();
-                foreach (var les in schoolDayStorage.Load(DateTime.Now).Schedule)
+                foreach (var les in schoolDayStorage.Load(currentDate).Schedule)
                 {
                     l.Add(new LessonGrade(les.Title, les.Grades));
                 }
@@ -122,10 +124,86 @@ namespace ElectronicDiary.DesktopClient.Windows
 
         public void _addLesson(object sender, RoutedEventArgs e)
         {
-            Window window = new AddLessonWindow(DateTime.UtcNow);
+            Window window = new AddLessonWindow(currentDate);
             window.Show();
             update();
         }
+
+        private void reloadAll()
+        {
+            if (schoolDayStorage.Load(currentDate) != null)
+            {
+                lb.ItemsSource = schoolDayStorage.Load(currentDate).Schedule;
+            }
+            else
+            {
+                lb.ItemsSource = new List<Lesson>();
+            }
+            if (schoolDayStorage.Load(currentDate) != null)
+            {
+                var l = new List<LessonTask>();
+                foreach (var les in schoolDayStorage.Load(currentDate).Schedule)
+                {
+                    l.Add(new LessonTask(les.Title, les.Homework));
+                }
+                lb2.ItemsSource = new List<LessonTask>();
+            }
+            else
+            {
+                lb2.ItemsSource = new List<Lesson>();
+            }
+            if (schoolDayStorage.Load(currentDate) != null)
+            {
+                var l = new List<LessonGrade>();
+                foreach (var les in schoolDayStorage.Load(currentDate).Schedule)
+                {
+                    l.Add(new LessonGrade(les.Title, les.Grades));
+                }
+                lb3.ItemsSource = l;
+            }
+            else
+            {
+                lb3.ItemsSource = new List<LessonGrade>();
+            }
+            _dateTime.Text = currentDate.Day.ToString() + "." + currentDate.Month.ToString() + "." + currentDate.Year.ToString();
+        }
+
+        public void _nextDay(object sender, RoutedEventArgs e)
+        {
+            currentDate = currentDate.AddDays(1);
+            reloadAll();
+        }
+
+        public void _previousDay(object sender, RoutedEventArgs e)
+        {
+            currentDate = currentDate.AddDays(-1);
+            reloadAll();
+        }
+
+        public void _next3Day(object sender, RoutedEventArgs e)
+        {
+            currentDate = currentDate.AddDays(3);
+            reloadAll();
+        }
+
+        public void _previous3Day(object sender, RoutedEventArgs e)
+        {
+            currentDate = currentDate.AddDays(-3);
+            reloadAll();
+        }
+
+        public void _nextWeek(object sender, RoutedEventArgs e)
+        {
+            currentDate = currentDate.AddDays(7);
+            reloadAll();
+        }
+
+        public void _previousWeek(object sender, RoutedEventArgs e)
+        {
+            currentDate = currentDate.AddDays(-7);
+            reloadAll();
+        }
+
         public void _addToSchedule(object sender, RoutedEventArgs e)
         {
         }

@@ -28,10 +28,19 @@
             <MenuItem Header="Оценки">
                 <MenuItem Header="Обновить и показать"/>
             </MenuItem>
-            <TextBlock x:Name="Name"/>
+            <MenuItem Header="Дата">
+                <MenuItem Header="Следующий день" Click="_nextDay"/>
+                <MenuItem Header="+3 дня" Click="_next3Day"/>
+                <MenuItem Header="+неделя" Click="_nextWeek"/>
+                <MenuItem Header="Предыдущий день" Click="_previousDay"/>
+                <MenuItem Header="-3 дня" Click="_previous3Day"/>
+                <MenuItem Header="-неделя" Click="_previousWeek"/>
+            </MenuItem>
+                <TextBlock x:Name="Name"/>
             <TextBlock Text="(Родитель)"/>
             <TextBlock x:Name="StudentName"/>
             <TextBlock Text="(Ученик)"/>
+            <TextBlock x:Name="_dateTime"/>
             </Menu>
         </StackPanel>
         <StackPanel Grid.Row="1">

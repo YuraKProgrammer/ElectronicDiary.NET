@@ -36,7 +36,7 @@ namespace ElectronicDiary.DesktopClient.Windows
             EndTime.Text = ToStringer.TimePointToString(lesson.EndTime);
             if (lesson.Grades != null && lesson.Grades.Count > 0)
             {
-                Grades.Text = lesson.Grades[0].ToString();
+                Grades.Text = ToStringer.GradesToString(lesson.Grades);
             }
             LessonType.Text = ToStringer.LessonTypeToString(lesson.lessonType);
             Duration.Text = ToStringer.DurationToString2(lesson.StartTime, lesson.EndTime) + " мин.";
@@ -56,6 +56,10 @@ namespace ElectronicDiary.DesktopClient.Windows
                 Homework.Text,
                 Lesson.StartTime,
                 Lesson.EndTime); 
+            foreach(var g in ToGrader.StringToGrades(Grades.Text))
+            {
+                les2.AddGrade(g);
+            }
             day1.AddToShedule(les2);
             storage.Save(day1);
             this.Close();

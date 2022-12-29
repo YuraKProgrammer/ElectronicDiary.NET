@@ -64,7 +64,7 @@ namespace ElectronicDiary.Models
                 case Models.Grade.Two:
                     return "2";
                 case Models.Grade.Missing:
-                    return "Н - отсутствие";
+                    return "Н";
             }
             return "";
         }

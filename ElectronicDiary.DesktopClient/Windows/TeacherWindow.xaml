@@ -32,8 +32,17 @@
                     <MenuItem Header="Добавить урок" Click="_addLesson"/>
                     <MenuItem Header="Добавить в расписание" Click="_addToSchedule"/>
                 </MenuItem>
+                <MenuItem Header="Дата">
+                    <MenuItem Header="Следующий день" Click="_nextDay"/>
+                    <MenuItem Header="+3 дня" Click="_next3Day"/>
+                    <MenuItem Header="+неделя" Click="_nextWeek"/>
+                    <MenuItem Header="Предыдущий день" Click="_previousDay"/>
+                    <MenuItem Header="-3 дня" Click="_previous3Day"/>
+                    <MenuItem Header="-неделя" Click="_previousWeek"/>
+                </MenuItem>
                 <TextBlock x:Name="Name"/>
                 <TextBlock Text="(Учитель)"/>
+                <TextBlock x:Name="_dateTime"/>
             </Menu>
         </StackPanel>
         <StackPanel Grid.Row="1">
