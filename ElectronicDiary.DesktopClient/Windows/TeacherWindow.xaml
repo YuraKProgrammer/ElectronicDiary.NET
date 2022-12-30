@@ -29,8 +29,10 @@
                     <MenuItem Header="Обновить и показать" Click="_grades_reload"/>
                 </MenuItem>
                 <MenuItem Header="Добавить">
-                    <MenuItem Header="Добавить урок" Click="_addLesson"/>
-                    <MenuItem Header="Добавить в расписание" Click="_addToSchedule"/>
+                    <MenuItem Header="Урок" Click="_addLesson"/>
+                    <MenuItem Header="День в расписание через неделю" Click="_addToSchedule"/>
+                    <MenuItem Header="День в расписание через 2 недели" Click="_addToSchedule2"/>
+                    <MenuItem Header="День на каждую неделю в течение месяца" Click="_addToScheduleMonth"/>
                 </MenuItem>
                 <MenuItem Header="Дата">
                     <MenuItem Header="Следующий день" Click="_nextDay"/>

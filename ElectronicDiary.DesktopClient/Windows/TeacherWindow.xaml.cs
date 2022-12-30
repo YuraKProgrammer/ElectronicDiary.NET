@@ -45,7 +45,7 @@ namespace ElectronicDiary.DesktopClient.Windows
 
         public void _lb_MouseDoubleClick(object sender, RoutedEventArgs e)
         {
-            var window = new EditLessonWindow(currentDate,(Lesson)lb.SelectedItem);
+            var window = new EditLessonWindow(currentDate, (Lesson)lb.SelectedItem);
             window.Show();
             update();
         }
@@ -206,6 +206,53 @@ namespace ElectronicDiary.DesktopClient.Windows
 
         public void _addToSchedule(object sender, RoutedEventArgs e)
         {
+            var lessons = schoolDayStorage.Load(currentDate).Schedule;
+            var load = schoolDayStorage.Load(currentDate.AddDays(7));
+            if (load == null || load.Schedule == null)
+            {
+                schoolDayStorage.Save(new SchoolDay(lessons, ToDater.DateTimeToDate(currentDate.AddDays(7))));
+                MessageBox.Show("День успешно дабавлен в расписание через неделю", "Сообщение");
+            }
+            else
+            {
+                MessageBox.Show("Неудача. Расписание на день через неделю уже существует!", "Сообщение");
+            }
+        }
+
+        public void _addToSchedule2(object sender, RoutedEventArgs e)
+        {
+            var lessons = schoolDayStorage.Load(currentDate).Schedule;
+            var load = schoolDayStorage.Load(currentDate.AddDays(14));
+            if (load == null || load.Schedule == null)
+            {
+                schoolDayStorage.Save(new SchoolDay(lessons, ToDater.DateTimeToDate(currentDate.AddDays(14))));
+                MessageBox.Show("День успешно дабавлен в расписание через две недели", "Сообщение");
+            }
+            else
+            {
+                MessageBox.Show("Неудача. Расписание на день через две недели уже существует!", "Сообщение");
+            }
+        }
+
+        public void _addToScheduleMonth(object sender, RoutedEventArgs e)
+        {
+            var lessons = schoolDayStorage.Load(currentDate).Schedule;
+            var load1 = schoolDayStorage.Load(currentDate.AddDays(7));
+            var load2 = schoolDayStorage.Load(currentDate.AddDays(14));
+            var load3 = schoolDayStorage.Load(currentDate.AddDays(21));
+            var load4 = schoolDayStorage.Load(currentDate.AddDays(28));
+            if ((load1 == null || load1.Schedule == null) && (load2 == null || load2.Schedule == null) && (load3 == null || load3.Schedule == null) && (load4 == null || load4.Schedule == null))
+            {
+                schoolDayStorage.Save(new SchoolDay(lessons, ToDater.DateTimeToDate(currentDate.AddDays(7))));
+                schoolDayStorage.Save(new SchoolDay(lessons, ToDater.DateTimeToDate(currentDate.AddDays(14))));
+                schoolDayStorage.Save(new SchoolDay(lessons, ToDater.DateTimeToDate(currentDate.AddDays(21))));
+                schoolDayStorage.Save(new SchoolDay(lessons, ToDater.DateTimeToDate(currentDate.AddDays(28))));
+                MessageBox.Show("День успешно дабавлен в расписание на каждую неделю в течение месяца", "Сообщение");
+            }
+            else
+            {
+                MessageBox.Show("Неудача. В какой-то из дней расписание уже существует!", "Сообщение");
+            }
         }
     }
 }
